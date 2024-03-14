@@ -56,7 +56,7 @@ const NewNotePage = () => {
           <Button
             variant="secondary"
             type="button"
-            onClick={() => (window.location.href = "/notes")}
+            onClick={() => navigate("/notes")}
           >
             Cancel
           </Button>

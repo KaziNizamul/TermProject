@@ -35,7 +35,6 @@ exports.createNote = async (req, res) => {
 };
 
 exports.updateNoteById = async (req, res) => {
-  console.log({req});
   try {
     const noteId = req.params.id;
     const updatedNote = req.body;

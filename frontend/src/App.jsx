@@ -6,17 +6,28 @@ import NewNote from "./components/pages/NewNotes";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import EditNotePage from "./components/pages/EditNotePage";
+import ProtectedRoute from './components/routes/protectedRoute';
 
 function App() {
+  const getProtectedComponent = (children) => {
+    return <ProtectedRoute>{children}</ProtectedRoute>;
+  };
+
   return (
     <BrowserRouter>
       <>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Notes />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/notes/:noteId/edit" element={<EditNotePage />} />
-          <Route path="/new-note" element={<NewNote />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/notes" element={getProtectedComponent(<Notes />)} />
+          <Route
+            path="/notes/:noteId/edit"
+            element={getProtectedComponent(<EditNotePage />)}
+          />
+          <Route
+            path="/new-note"
+            element={getProtectedComponent(<NewNote />)}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

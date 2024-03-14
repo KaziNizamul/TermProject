@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../../../api";
 import Input from "../../atoms/Input";
@@ -6,13 +7,15 @@ import Button from "../../atoms/Button";
 import styles from "./index.module.scss";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: login,
-    onSuccess: () => {
-      window.location.href = "/notes";
+    onSuccess: (data) => {
+      localStorage.setItem('token', data.token);
+      navigate('/notes');
     },
   });
 
@@ -45,7 +48,7 @@ const LoginPage = () => {
             <Button
               type="button"
               variant="secondary"
-              onClick={() => (window.location.href = "/register")}
+              onClick={() => navigate("/register")}
             >
               Register
             </Button>

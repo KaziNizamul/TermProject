@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { register } from "../../../api";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import styles from "./index.module.scss";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ const RegisterPage = () => {
   const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: register,
     onSuccess: () => {
-      window.location.href = "/login";
+      navigate('/login');
     },
   });
 
@@ -51,7 +53,7 @@ const RegisterPage = () => {
             <Button
               type="button"
               variant="secondary"
-              onClick={() => (window.location.href = "/login")}
+              onClick={() => navigate("/login")}
             >
               Login
             </Button>

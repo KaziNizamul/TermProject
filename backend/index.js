@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const noteRoutes = require('./routes/note');
 const userRoutes = require('./routes/user');
+const authMiddleware = require('./middlewares/authVerify');
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/notes', noteRoutes);
+app.use('/api/notes', authMiddleware, noteRoutes);
 app.use('/api/users', userRoutes);
 
 app.listen(port, () => {
