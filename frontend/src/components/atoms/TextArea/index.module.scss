@@ -1,0 +1,35 @@
+@import '../../../styles/variables';
+
+.form-group {
+  margin-bottom: $spacer;
+
+  .label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: $spacer * 0.5;
+    color: $gray-700;
+  }
+
+  .form-control {
+    display: block;
+    width: 93%;
+    resize: vertical;
+    padding: $spacer * 0.5 $spacer;
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1.5;
+    color: $gray-800;
+    background-color: #fff;
+    border: $border-width solid $gray-300;
+    border-radius: $border-radius;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+      color: $gray-800;
+      background-color: #fff;
+      border-color: $primary-color;
+      outline: 0;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.25);
+    }
+  }
+}

@@ -6,7 +6,8 @@
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 93%;
+  resize: vertical;
   padding: $spacer * 0.5 $spacer;
   font-size: $font-size-base;
   font-weight: 400;

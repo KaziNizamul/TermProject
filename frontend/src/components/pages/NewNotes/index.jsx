@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "../../../api";
 import Input from "../../atoms/Input";
+import TextArea from "../../atoms/TextArea";
 import Button from "../../atoms/Button";
 import styles from "./index.module.scss";
 
@@ -39,11 +40,11 @@ const NewNotePage = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <Input
+        <TextArea
           label="Content"
-          as="textarea"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          rows="5"
         />
         <div className={styles["btn-group"]}>
           <Button type="submit" disabled={isLoading}>

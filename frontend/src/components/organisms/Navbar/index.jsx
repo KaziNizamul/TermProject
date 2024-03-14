@@ -1,24 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <a href="/" className={styles["navbar-brand"]}>
+      <Link to="/" className={styles["navbar-brand"]}>
         Notes App
-      </a>
+      </Link>
       <ul className={styles["navbar-nav"]}>
         <li className={styles["nav-item"]}>
-          <a href="/notes">Notes</a>
+          <Link to="/notes">Notes</Link>
         </li>
         <li className={styles["nav-item"]}>
-          <a href="/new-note">New Note</a>
+          <Link to="/new-note">New Note</Link>
         </li>
         <li className={styles["nav-item"]}>
-          <a href="/login">Login</a>
+          <Link to="/login">Login</Link>
         </li>
         <li className={styles["nav-item"]}>
-          <a href="/register">Register</a>
+          <Link to="/register">Register</Link>
         </li>
       </ul>
     </nav>
