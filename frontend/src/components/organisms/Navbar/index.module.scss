@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacer * 0.5 $spacer;
+  background-color: $primary-color;
+  color: #fff;
+
+  a {
+    color: #fff;
+
+    &:hover {
+      color: darken(#fff, 10%);
+    }
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    .nav-item {
+      margin-left: $spacer;
+    }
+  }
+}

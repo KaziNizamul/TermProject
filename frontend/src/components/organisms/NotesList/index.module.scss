@@ -1,0 +1,8 @@
+@import '../../../styles/variables';
+
+.notes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: $spacer * 2;
+  padding: $spacer * 2;
+}

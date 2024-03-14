@@ -1,0 +1,83 @@
+@import '../../../styles/variables';
+
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: $primary-color;
+  border: $border-width solid $primary-color;
+  padding: $spacer * 0.5 $spacer;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  border-radius: $border-radius;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: darken($primary-color, 10%);
+    border-color: darken($primary-color, 10%);
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.5);
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+}
+
+.btn-secondary {
+  color: $gray-800;
+  background-color: $gray-300;
+  border-color: $gray-300;
+
+  &:hover {
+    color: $gray-800;
+    background-color: darken($gray-300, 10%);
+    border-color: darken($gray-300, 10%);
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 0.2rem rgba($gray-300, 0.5);
+  }
+}
+
+.btn-success {
+  background-color: $success-color;
+  border-color: $success-color;
+
+  &:hover {
+    background-color: darken($success-color, 10%);
+    border-color: darken($success-color, 10%);
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 0.2rem rgba($success-color, 0.5);
+  }
+}
+
+.btn-danger {
+  background-color: $danger-color;
+  border-color: $danger-color;
+
+  &:hover {
+    background-color: darken($danger-color, 10%);
+    border-color: darken($danger-color, 10%);
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: 0 0 0 0.2rem rgba($danger-color, 0.5);
+  }
+}

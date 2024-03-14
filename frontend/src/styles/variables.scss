@@ -1,0 +1,35 @@
+// Colors
+$primary-color: #5c6ac4;
+$secondary-color: #637381;
+$success-color: #42d692;
+$danger-color: #de3618;
+$gray-100: #f4f6f8;
+$gray-200: #eaedf0;
+$gray-300: #dfe3e8;
+$gray-400: #c4cdd5;
+$gray-500: #919eab;
+$gray-600: #637381;
+$gray-700: #424c56;
+$gray-800: #212b36;
+$gray-900: #161c24;
+
+// Font
+$font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+// Border
+$border-width: 1px;
+$border-color: $gray-300;
+$border-radius: 0.25rem;

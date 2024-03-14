@@ -1,0 +1,21 @@
+@import '../../../styles/variables';
+
+.notes-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: $spacer * 4;
+
+  .notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: $spacer * 2;
+
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+}
