@@ -8,6 +8,16 @@ export const getNotes = async () => {
   return response.data;
 };
 
+export const getNoteById = async (noteId) => {
+  const response = await axios.get(`/notes/${noteId}`);
+  return response.data;
+};
+
+export const updateNoteById = async (noteId, updatedNote) => {
+  const response = await axios.patch(`/notes/${noteId}`, updatedNote)
+  return response.data;
+};
+
 export const createNote = async (note) => {
   const response = await axios.post('/notes', note);
   return response.data;

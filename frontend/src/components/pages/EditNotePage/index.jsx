@@ -1,42 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { createNote } from "../../../api";
+import { getNoteById, updateNoteById } from "../../../api";
 import Input from "../../atoms/Input";
 import TextArea from "../../atoms/TextArea";
 import Button from "../../atoms/Button";
 import styles from "./index.module.scss";
 
-const NewNotePage = () => {
-  const queryClient = useQueryClient();
+const EditNotePage = () => {
+  const { noteId } = useParams();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const {
-    mutate: createNoteHandler,
+    mutate: updateNoteHandler,
     isLoading,
     isError,
     error,
   } = useMutation({
-    mutationFn: createNote,
+    mutationFn: (note) => updateNoteById(noteId, note),
     onSuccess: () => {
       queryClient.invalidateQueries(["notes"]);
-      setTitle("");
-      setContent("");
       navigate("/notes");
     },
   });
 
+  useEffect(() => {
+    const fetchNote = async () => {
+      const note = await getNoteById(noteId);
+      setTitle(note.title);
+      setContent(note.content);
+    };
+    fetchNote();
+  }, [noteId]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    createNoteHandler({ title, content });
+    updateNoteHandler({ title, content });
   };
 
   return (
-    <div className={styles["new-note-page"]}>
-      <form className={styles["new-note-form"]} onSubmit={handleSubmit}>
-        <h2>New Note</h2>
+    <div className={styles["edit-note-page"]}>
+      <form className={styles["edit-note-form"]} onSubmit={handleSubmit}>
+        <h2>Edit Note</h2>
         {isError && <div>Error: {error.message}</div>}
         <Input
           label="Title"
@@ -56,7 +64,7 @@ const NewNotePage = () => {
           <Button
             variant="secondary"
             type="button"
-            onClick={() => (window.location.href = "/notes")}
+            onClick={() => navigate("/notes")}
           >
             Cancel
           </Button>
@@ -66,4 +74,4 @@ const NewNotePage = () => {
   );
 };
 
-export default NewNotePage;
+export default EditNotePage;

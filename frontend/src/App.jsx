@@ -5,6 +5,7 @@ import Notes from "./components/pages/Notes";
 import NewNote from "./components/pages/NewNotes";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import EditNotePage from "./components/pages/EditNotePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Notes />} />
           <Route path="/notes" element={<Notes />} />
+          <Route path="/notes/:noteId/edit" element={<EditNotePage />} />
           <Route path="/new-note" element={<NewNote />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

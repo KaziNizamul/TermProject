@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getNotes, deleteNote } from "../../../api";
 import NotesList from "../../organisms/NotesList";
@@ -28,12 +28,11 @@ const NotesPage = () => {
   });
 
   const handleNewNote = () => {
-    navigate('/new-note');
+    navigate("/new-note");
   };
 
   const handleEditNote = (noteId) => {
-    // Implement logic to edit the note
-    console.log(`Editing note with ID: ${noteId}`);
+    navigate(`/notes/${noteId}/edit`);
   };
 
   const handleDeleteNote = (noteId) => {
@@ -44,10 +43,7 @@ const NotesPage = () => {
     <div className={styles["notes-page"]}>
       <div className={styles["notes-header"]}>
         <h1>Notes</h1>
-        <Button
-          variant="primary"
-          onClick={handleNewNote}
-        >
+        <Button variant="primary" onClick={handleNewNote}>
           New Note
         </Button>
       </div>

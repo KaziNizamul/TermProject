@@ -1,0 +1,35 @@
+@import '../../../styles/variables';
+
+.edit-note-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $gray-100;
+}
+
+.edit-note-form {
+  width: 100%;
+  max-width: 500px;
+  padding: $spacer * 2;
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba($gray-800, 0.1);
+
+  h2 {
+    margin-bottom: $spacer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $spacer;
+
+    button {
+      margin-left: $spacer * 0.5;
+    }
+  }
+}

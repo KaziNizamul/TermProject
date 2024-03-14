@@ -9,6 +9,16 @@ exports.getAllNotes = async (req, res) => {
   }
 };
 
+exports.getByNoteId = async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const note = await Note.findById(noteId);
+    res.status(200).json(note);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 exports.createNote = async (req, res) => {
   const note = new Note({
     title: req.body.title,
@@ -24,13 +34,22 @@ exports.createNote = async (req, res) => {
   }
 };
 
+exports.updateNoteById = async (req, res) => {
+  console.log({req});
+  try {
+    const noteId = req.params.id;
+    const updatedNote = req.body;
+    const note = await Note.findByIdAndUpdate(noteId, updatedNote, { returnDocument: 'after' });
+    res.status(200).json(note);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 exports.deleteNote = async (req, res) => {
   try {
-    const note = await Note.findById(req.params.id);
-    if (!note) {
-      return res.status(404).json({ message: 'Note not found' });
-    }
-    await note.remove();
+    const noteId = req.params.id;
+    await Note.findByIdAndDelete(noteId);
     res.json({ message: 'Note deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
