@@ -4,9 +4,8 @@ import {
   AuthenticationDetails,
   CognitoUser,
 } from "amazon-cognito-identity-js";
-import userpool from "./core/userPool";
+import userPool from "./core/userPool";
 
-// Set the base URL for the API requests
 axios.defaults.baseURL =
   "https://4lguhbgta0.execute-api.us-east-1.amazonaws.com/dev";
 
@@ -55,7 +54,7 @@ export const login = async (credentials) => {
   return new Promise((resolve, reject) => {
     const user = new CognitoUser({
       Username: email,
-      Pool: userpool,
+      Pool: userPool,
     });
 
     const authDetails = new AuthenticationDetails({
@@ -92,7 +91,7 @@ export const register = async (userData) => {
     })
   );
   return new Promise((resolve, reject) => {
-    userpool.signUp(email, password, attributeList, null, (err, data) => {
+    userPool.signUp(email, password, attributeList, null, (err, data) => {
       if (err) {
         reject(new Error(err || "Error signing up"));
       } else {
