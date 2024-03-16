@@ -14,7 +14,7 @@ const LoginPage = () => {
   const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', data?.accessToken?.jwtToken);
       navigate('/notes');
     },
   });

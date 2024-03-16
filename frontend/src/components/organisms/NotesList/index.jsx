@@ -7,12 +7,12 @@ const NotesList = ({ notes, onEdit, onDelete }) => {
     <div className={styles["notes-list"]}>
       {notes.map((note) => (
         <NoteItem
-          key={note._id}
+          key={note.id}
           title={note.title}
           content={note.content}
           date={note.date}
-          onEdit={() => onEdit(note._id)}
-          onDelete={() => onDelete(note._id)}
+          onEdit={() => onEdit(note.id)}
+          onDelete={() => onDelete(note.id)}
         />
       ))}
     </div>

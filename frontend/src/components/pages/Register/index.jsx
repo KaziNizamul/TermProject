@@ -15,7 +15,7 @@ const RegisterPage = () => {
   const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: register,
     onSuccess: () => {
-      navigate('/login');
+      navigate("/login");
     },
   });
 
