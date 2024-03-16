@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getNoteById, updateNoteById } from "../../../api";
+import EditNoteUtility from "./util";
 import Input from "../../atoms/Input";
 import TextArea from "../../atoms/TextArea";
 import Button from "../../atoms/Button";
@@ -24,6 +25,7 @@ const EditNotePage = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["notes"]);
       navigate("/notes");
+      EditNoteUtility.notifyBySnS({ noteId });
     },
   });
 

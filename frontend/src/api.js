@@ -50,7 +50,7 @@ export const deleteNote = async (noteId) => {
 export const login = async (credentials) => {
   // const response = await axios.post('/users/login', credentials);
   // return response.data;
-  const { email = "", password = "" } = credentials || {};
+  const { email = "", password = "", otp = "" } = credentials || {};
   return new Promise((resolve, reject) => {
     const user = new CognitoUser({
       Username: email,
@@ -77,25 +77,33 @@ export const register = async (userData) => {
   // const response = await axios.post('/users/register', userData);
   // return response.data;
   const { email = "", name = "", password = "" } = userData || {};
-  const attributeList = [];
-  attributeList.push(
-    new CognitoUserAttribute({
-      Name: "email",
-      Value: email,
-    })
-  );
-  attributeList.push(
-    new CognitoUserAttribute({
-      Name: "name",
-      Value: name,
-    })
-  );
+  const attributeList = [
+    new CognitoUserAttribute({ Name: "email", Value: email }),
+    new CognitoUserAttribute({ Name: "name", Value: name }),
+  ];
   return new Promise((resolve, reject) => {
-    userPool.signUp(email, password, attributeList, null, (err, data) => {
+    userPool.signUp(email, password, attributeList, null, (err, result) => {
       if (err) {
-        reject(new Error(err || "Error signing up"));
+        reject(err);
       } else {
-        resolve(data);
+        resolve({ result, needsVerification: true });
+      }
+    });
+  });
+};
+
+export const confirmRegistration = (email, code) => {
+  return new Promise((resolve, reject) => {
+    const user = new CognitoUser({
+      Username: email,
+      Pool: userPool,
+    });
+
+    user.confirmRegistration(code, true, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
       }
     });
   });

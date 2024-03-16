@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.535.0",
+    "@aws-sdk/client-sns": "^3.535.0",
     "@tanstack/react-query": "^5.28.0",
     "amazon-cognito-identity-js": "^6.3.12",
     "axios": "^0.21.1",

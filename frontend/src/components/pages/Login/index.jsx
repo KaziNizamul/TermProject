@@ -14,8 +14,8 @@ const LoginPage = () => {
   const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      localStorage.setItem('token', data?.accessToken?.jwtToken);
-      navigate('/notes');
+      localStorage.setItem("token", data?.accessToken?.jwtToken);
+      navigate("/notes");
     },
   });
 
@@ -44,13 +44,6 @@ const LoginPage = () => {
           <div className={styles["btn-group"]}>
             <Button type="submit" disabled={isLoading} variant="primary">
               {isLoading ? "Loading..." : "Login"}
-            </Button>
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={() => navigate("/register")}
-            >
-              Register
             </Button>
           </div>
         </form>
