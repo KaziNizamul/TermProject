@@ -1,9 +1,8 @@
-# Use the official Node.js base image
-FROM node:latest
+# Start from Node.js version 16
+FROM node:16
 
 # Install required packages
-RUN apt-get update && \
-  apt-get install -y \
+RUN apt-get update && apt-get install -y \
   curl \
   git \
   openssh-client \
@@ -21,8 +20,9 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose port
+# Expose port 5173
 EXPOSE 5173
 
 # Command to run the application
 CMD ["npm", "start"]
+
