@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@aws-sdk/client-sns": "^3.535.0",
     "@tanstack/react-query": "^5.28.0",
