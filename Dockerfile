@@ -1,6 +1,10 @@
 # Use Amazon Linux as the base image
 FROM amazonlinux:2
 
+# Install Node.js and NPM
+RUN amazon-linux-extras install -y nodejs18
+RUN yum install -y npm
+
 # Install required packages
 RUN yum update -y && \
   yum install -y \
@@ -9,9 +13,7 @@ RUN yum update -y && \
   openssh \
   bash \
   tar \
-  wget \
-  nodejs \
-  npm
+  wget
 
 # Set working directory
 WORKDIR /app
