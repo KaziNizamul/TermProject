@@ -11,7 +11,9 @@ RUN apt-get update && apt-get install -y \
   wget
 
 # Set working directory
-WORKDIR /app
+RUN mkdir -p /usr/src/kazi_pvt_dir
+
+WORKDIR /usr/src/kazi_pvt_dir
 
 # Copy package.json and install dependencies
 COPY package.json .
