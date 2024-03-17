@@ -19,6 +19,8 @@ WORKDIR /usr/src/kazi_pvt_dir
 COPY package.json .
 RUN npm install
 
+RUN echo "✅ ran npm i"
+
 # Copy the rest of the application code
 COPY . .
 
@@ -27,4 +29,8 @@ EXPOSE 80
 
 # Command to run the application
 CMD ["npm", "start"]
+
+
+
+
 
