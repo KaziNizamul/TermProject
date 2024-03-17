@@ -2,7 +2,8 @@
 FROM amazonlinux:2
 
 # Install required packages
-RUN yum update -y \
+RUN yum update -y && \
+  yum install -y \
   curl \
   git \
   openssh \
@@ -17,8 +18,7 @@ WORKDIR /app
 
 # Copy package.json and install dependencies
 COPY package.json .
-
-RUN npm install
+RUN npm ci
 
 # Copy the rest of the application code
 COPY . .
@@ -27,4 +27,4 @@ COPY . .
 EXPOSE 5173
 
 # Command to run the application
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
