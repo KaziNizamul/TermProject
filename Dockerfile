@@ -1,16 +1,12 @@
-# Use Amazon Linux as the base image
-FROM amazonlinux:2
-
-# Install Node.js and NPM
-RUN amazon-linux-extras install -y nodejs18
-RUN yum install -y npm
+# Use the official Node.js base image
+FROM node:latest
 
 # Install required packages
-RUN yum update -y && \
-  yum install -y \
+RUN apt-get update && \
+  apt-get install -y \
   curl \
   git \
-  openssh \
+  openssh-client \
   bash \
   tar \
   wget
@@ -20,7 +16,7 @@ WORKDIR /app
 
 # Copy package.json and install dependencies
 COPY package.json .
-RUN npm ci
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
