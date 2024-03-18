@@ -33,7 +33,7 @@ export const getNoteById = async (noteId) => {
 };
 
 export const updateNoteById = async (noteId, updatedNote) => {
-  const response = await axios.patch(`/notes/${noteId}`, updatedNote);
+  const response = await axios.put(`/notes/${noteId}`, updatedNote);
   return response.data;
 };
 
